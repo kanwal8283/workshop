@@ -10,10 +10,10 @@ end
 
 
 
-Given /http:\/\/ci01.sc\.pn\/NewCastle/ do
+Given /http:\/\/ci01.sc\.pn\/GoldCoast/ do
   $web_robot = WebRobot.new
 
-  $web_robot.visit("//NewCastle")
+  $web_robot.visit("//GoldCoast")
 end
 
 
@@ -61,3 +61,8 @@ end
 Given /user should be able to click on Get Scoopon Button/ do
      $web_robot.find(:xpath,'//input[@id=\'SubmitButton1\']').click
 end
+
+
+
+
+
