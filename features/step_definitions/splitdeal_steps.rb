@@ -1,5 +1,6 @@
-require 'capybara/dsl'
 
+require 'capybara/dsl'
+#htjhnygk
 Capybara.run_server = false
 Capybara.default_driver = :selenium
 Capybara.app_host = 'http://ci01.sc.pn'
