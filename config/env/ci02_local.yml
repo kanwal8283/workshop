@@ -1,0 +1,53 @@
+settings: {
+
+  webHost: {
+    domain: 'ci02.sc.pn',
+    url: '',
+    port: 80,
+
+  },
+
+  ciHelperService: {
+    domain: 'ci02.sc.pn',
+    url: '',
+    port: 81,
+    localDownloadDir: "C:/ci_downloads"
+  },
+
+  selenium: {
+    webTimeout: 10,
+    defaultWebDriver: !ruby/symbol ie,
+    max_retries: 4,
+    sleep_time: 2,
+  },
+
+  reuseOldDeals: false,
+
+   adminUsers: {
+      admin1: {
+        username: tester.admin@cotd.com.au,
+        password: pass
+      }
+    },
+
+   standardUsers: {
+     user1: {
+       username: user@user.com,
+       password: pass
+     }
+   },
+
+    paypal: {
+      sandboxUser: {
+         username: Jarrod.Folino@catchoftheday.com.au,
+         password: cotdcotd
+      },
+
+      mockUser1: {
+         username: cotd_1332731257_per@catchoftheday.com.au,
+         password: 12345678
+      }
+    }
+}
+
+

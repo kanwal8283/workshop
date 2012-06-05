@@ -1,18 +1,8 @@
-
-require 'capybara/dsl'
-#htjhnygk
-Capybara.run_server = false
-Capybara.default_driver = :selenium
-Capybara.app_host = 'http://ci01.sc.pn'
-
-class WebRobot
-  include Capybara::DSL
-end
-
-Given /^I go to http:\/\/ci01.sc.pn for "(.*)"$/ do |city|
+Given /^I go to http:\/\/ci03.sc.pn for "(.*)"$/ do |city|
   $web_robot = WebRobot.new
   $web_robot.visit("/" + city)
 end
+
 Given /I should be able to click on more cities/ do
   $web_robot.find(:xpath,'//a[@id=\'AllLocationsButton\']').click
 end
@@ -42,7 +32,7 @@ Given /Pop-Up window should come up/ do
 end
 
 Given /user able to choose from the pop-up options/ do
-  $web_robot.find(:xpath, '//Div[@class=\'DealOptions\']/table[3]/tbody/tr/td[@class=\'OptionName\']/a').click
+  $web_robot.find(:xpath, '//Div[@class=\'DealOptions\']/table[1]/tbody/tr/td[@class=\'OptionName\']/a').click
 end
 
 Given /User should be able to click Sign In/ do

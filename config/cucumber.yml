@@ -1,0 +1,24 @@
+# Used for running parallel tests on local windows machine via cygwin
+group-1: -r features -f html -o group1.html --tags @group-1 GROUP_ID=1
+group-2: -r features -f html -o group2.html --tags @group-2 GROUP_ID=2
+group-3: -r features -f html -o group3.html --tags @group-3 GROUP_ID=3
+group-4: -r features -f html -o group4.html --tags @group-4 GROUP_ID=4
+group-5: -r features -f html -o group5.html --tags @group-5 GROUP_ID=5
+group-6: -r features -f html -o group6.html --tags @group-6 GROUP_ID=6
+group-7: -r features -f html -o group7.html --tags @group-7 GROUP_ID=7
+
+# Used for running parallel tests on Windows CI
+ci-1: -r features --tags @group-1 GROUP_ID=CI_1
+ci-2: -r features --tags @group-2 GROUP_ID=CI_2
+ci-3: -r features --tags @group-3 GROUP_ID=CI_3
+ci-4: -r features --tags @group-4 GROUP_ID=CI_4
+ci-5: -r features --tags @group-5 GROUP_ID=CI_5
+ci-6: -r features --tags @group-6 GROUP_ID=CI_6
+ci-7: -r features --tags @group-7 GROUP_ID=CI_7
+
+
+# Standard profiles
+verify: -r features VERIFY=true GROUP_ID=1
+milestone-1: -r features --tags @milestone-1 GROUP_ID=1M
+milestone-2: -r features --tags @milestone-2 GROUP_ID=2M
+default: -r features GROUP_ID=1
