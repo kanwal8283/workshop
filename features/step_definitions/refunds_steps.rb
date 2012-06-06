@@ -37,11 +37,11 @@ Then /^user should be able to click on view purchases icon$/ do
 end
 
 And /^user should be able to click on edit purchase details$/ do
- $web_robot.find(:xpath, '//div[4]/table/tbody/tr[4]/td[9]/a[1]/img').click  # user can change the xpath for list of options by tr[1], tr[2] or tr[3]
+ $web_robot.find(:xpath, '//div[4]/table/tbody/tr[6]/td[9]/a[1]/img').click  # user can change the xpath for list of options by tr[1], tr[2] or tr[3]
 end
 
 Then /^user should able to click on show refund form link$/ do
-$web_robot.find(:xpath, '//tr[16]/td/div/a').click
+$web_robot.find(:xpath, '//form/table/tbody/tr[16]/td/div/a').click
 end
 
 And /^user should be able to click on refund checkbox$/ do
@@ -60,7 +60,7 @@ Then /^user should be able to click on process refund button$/ do
 end
 
 Then /^user should be able to verify the refund reason "([^"]*)"$/ do |arg|
-$web_robot.has_xpath?("//form/table/tbody/tr[16]/td/table/tbody/tr/td[5]/span").should eql true
+$web_robot.find(:xpath, "//form/table/tbody/tr[16]/td/table/tbody/tr/td[5]/span").text.should match arg
   end
 When /^user should be able to copy the GC code$/ do
  @refund_code = $web_robot.find(:xpath, '//form/table/tbody/tr[16]/td/table/tbody/tr/td[6]/a').text
@@ -87,6 +87,7 @@ When /^user should be able to redeem gift certificate$/ do
 end
 
 When /^"(.*)" should be matched after redeemed$/ do |arg|
-   $web_robot.find.last(:xpath, '//div/div[3]/div/div/div/div/table/tbody').text.should eql @refund_code
-  If arg
+  sleep 6
+     $web_robot.find(:xpath, "//td[@class='GiftTitle' and text()= '#{@refund_code}']").text.should eql @refund_code
+    puts "Gift Certificate code #{@refund_code}"
 end
