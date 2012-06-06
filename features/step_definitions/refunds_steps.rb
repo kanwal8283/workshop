@@ -37,11 +37,11 @@ Then /^user should be able to click on view purchases icon$/ do
 end
 
 And /^user should be able to click on edit purchase details$/ do
- $web_robot.find(:xpath, '//div[4]/table/tbody/tr[6]/td[9]/a[1]/img').click  # user can change the xpath for list of options by tr[1], tr[2] or tr[3]
+ $web_robot.find(:xpath, '//div[4]/table/tbody/tr[1]/td[9]/a[1]/img').click  # user can change the xpath for list of options by tr[1], tr[2] or tr[3]
 end
 
 Then /^user should able to click on show refund form link$/ do
-$web_robot.find(:xpath, '//form/table/tbody/tr[16]/td/div/a').click
+$web_robot.find(:xpath, '//form/table/tbody/tr[11]/td/div/a[1]').click
 end
 
 And /^user should be able to click on refund checkbox$/ do

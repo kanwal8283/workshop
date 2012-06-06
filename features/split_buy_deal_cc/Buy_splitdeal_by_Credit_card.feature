@@ -18,9 +18,9 @@ Feature: Buy a Split Deal for a friend (Existing user not logged in)
     Given user go to http://ci03.sc.pn for "admin"
     Then user should be able to log in
     When user should be able to click on accounts link
-    Then use should be able to search through email address for "singh@gmail.com"
+    Then use should be able to search through email address for "kanwal.singh@scoopon.com.au"
     Then user should be able to click on Find button
-    Then user should see the exact email address "singh@gmail.com"
+    Then user should see the exact email address "kanwal.singh@scoopon.com.au"
     Then user should be able to click on view purchases icon
     And user should be able to click on edit purchase details
     Then user should able to click on show refund form link

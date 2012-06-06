@@ -45,7 +45,7 @@ Then /super should be able to select the quantity/ do
 end
 
 Given /user should be able to enter email and password/    do
-  $web_robot.find(:xpath, '//div[@id=\'SignInForm\']/input[@class=\'SignInEmailAddress\']').set ('ksingh1314@gmail.com')
+  $web_robot.find(:xpath, '//div[@id=\'SignInForm\']/input[@class=\'SignInEmailAddress\']').set ('kanwal.singh@scoopon.com.au')
   $web_robot.find(:xpath, '//div[@id=\'SignInForm\']/input[@class=\'SignInPassword\']').set ('manoobilli')
   $web_robot.find(:xpath, '//div[@id=\'SignInForm\']/input[@class=\'SignInButton\']').click
 end
