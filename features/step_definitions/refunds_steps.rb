@@ -1,4 +1,4 @@
-Given /^user go to http:\/\/ci03.sc.pn for "(.*)"$/ do |admin|
+Given /^user go to http:\/\/uat01.sc.pn for "(.*)"$/ do |admin|
   $web_robot = WebRobot.new
   $web_robot.visit("/" + admin)
 end
@@ -25,10 +25,10 @@ Then /^user should be able to click on Find button$/ do
 end
 
 Then /^user should see the exact email address "([^"]*)"$/ do |expected_email|
-string = "#{expected_email}"
-puts string
-puts "Matches"
- $web_robot.find(:xpath, '//div[4]/table[2]/tbody/tr/td[3]/a').text.should eql  string
+#string = "#{expected_email}"
+#puts string
+#puts "Matches with search email address"
+ $web_robot.find(:xpath, '//div[4]/table[2]/tbody/tr/td[3]/a').text.should eql  expected_email
 end
 
 
@@ -60,10 +60,10 @@ Then /^user should be able to click on process refund button$/ do
 end
 
 Then /^user should be able to verify the refund reason "([^"]*)"$/ do |arg|
-$web_robot.find(:xpath, "//form/table/tbody/tr[16]/td/table/tbody/tr/td[5]/span").text.should match arg
+$web_robot.find(:xpath, "//form/table/tbody/tr[11]/td/table/tbody/tr/td[6]/span").text.should match arg
   end
 When /^user should be able to copy the GC code$/ do
- @refund_code = $web_robot.find(:xpath, '//form/table/tbody/tr[16]/td/table/tbody/tr/td[6]/a').text
+ @refund_code = $web_robot.find(:xpath, '//form/table/tbody/tr[11]/td/table/tbody/tr/td[7]/a').text
   end
 
 When /^user SignIn and enter the SignIn details$/ do
@@ -87,7 +87,8 @@ When /^user should be able to redeem gift certificate$/ do
 end
 
 When /^"(.*)" should be matched after redeemed$/ do |arg|
-  sleep 6
-     $web_robot.find(:xpath, "//td[@class='GiftTitle' and text()= '#{@refund_code}']").text.should eql @refund_code
+ $web_robot.set_wait_time 10
+ $web_robot.find(:xpath, "//td[@class='GiftTitle' and text()= '#{@refund_code}']").text.should eql @refund_code
+
     puts "Gift Certificate code #{@refund_code}"
 end

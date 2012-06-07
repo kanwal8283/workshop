@@ -1,4 +1,4 @@
-Given /^I go to http:\/\/ci03.sc.pn for "(.*)"$/ do |city|
+Given /^I go to http:\/\/uat01.sc.pn for "(.*)"$/ do |city|
   $web_robot = WebRobot.new
   $web_robot.visit("/" + city)
 end
@@ -58,9 +58,14 @@ Given /user should be able to enter the credit card details/ do
   $web_robot.select("4" ,{:from => "CreditCardExpirationMonth"})
   $web_robot.select("2013" ,{:from => "CreditCardExpirationYear"})
   $web_robot.find(:xpath, '//input[@id=\'CreditCardSecurityCode\']').set('123')
-     sleep 2
+     $web_robot.set_wait_time 5
 end
 
 Given /user should be able to click on Get Scoopon Button/ do
   $web_robot.find(:xpath,'//input[@id=\'SubmitButton1\']').click
+end
+Then /^the page should display "Success! Enjoy your Scoopon!"$/ do
+   $web_robot.set_wait_time 5
+   $web_robot.find(:xpath, '//h2[@id = \'PopBoxTitle\' and text() = \'Success! Enjoy your Scoopon!\']')
+  $web_robot.find(:xpath, '//img[@id=\'PopBoxClose\']').click
 end
