@@ -28,29 +28,36 @@ end
  @initialPosition = :ACTIVE
  end
  
+ @firstPlacement = false
+ 
 if(@firstMove && outOfTable(x,y))
 puts "Initial move has to be on the table"
 return
 end
+@x = x.to_i
+@y = y.to_i
+
 end
 
 
-def outOfTable(x,y)
-x = x.to_i
-y = y.to_i
 
-if(x > 5 || x < 0 || y > 5 || y < 0)
-return true
-else
-return false
-end
-end
 
 def move
 if(@initialPosition == :INACTIVE)
 puts "RObot is not active yet"
 return
 end
+
+resultArray = moveTheRobot(@x,@y,@f)
+
+
+if(resultArray.count == 0)
+puts "Robot cannot move further."
+else
+@x = resultArray['x']
+@y = resultArray['y'] 
+end
+
 end
 
 def left
@@ -58,12 +65,20 @@ if(@initialPosition == :INACTIVE)
 puts "RObot is not active yet"
 return
 end
+@f = @f - 1;
+if(@f < 0)
+@f = @f + 4;
+end
 end
 
 def right
 if(@initialPosition == :INACTIVE)
 puts "RObot is not active yet"
 return
+end
+@f = @f + 1;
+if(@f > 3)
+@f = @f - 4;
 end
 end
 
@@ -76,6 +91,38 @@ end
 puts  "RObot Location: #{@x},#{@y},#{@direction[@f]}"
 end
 
+def outOfTable(x,y)
+x = x.to_i
+y = y.to_i
+
+if(x > 5 || x < 0 || y > 5 || y < 0)
+return true
+else
+return false
+end
+end
+
+def moveTheRobot(x,y,f)
+
+case f
+     when 0
+y+=1
+     when 1
+x+=1
+     when 2
+y-=1
+      when 3
+x-=1
+end
+
+
+if(outOfTable(x,y))	
+return {}
+else
+return {'x'=>x,'y'=>y}
+end	
+
+end
 
 
 def robotCommand(line)
@@ -116,9 +163,12 @@ report
 else
 puts "Invalid Command"
 end
-end
+
 
 end
+end
+
+
 
 
 r= Robot.new
