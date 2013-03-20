@@ -1,14 +1,7 @@
 class Robot
-@x
-@y
-@f
-@initialPosition
-@direction
-@firstMove
-
 def initialize
 @initialPosition = :INACTIVE
-@direction = Array["NORTH","SOUTH","EAST", "WEST"]
+@direction = Array["NORTH","EAST","SOUTH", "WEST"]
 @firstMove = true
 end
 
@@ -173,7 +166,7 @@ end
 
 r= Robot.new
 puts "Ready to move"
+
 while line= gets.chomp
 r.robotCommand(line)
 end
-
