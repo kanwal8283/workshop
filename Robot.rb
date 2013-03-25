@@ -1,13 +1,13 @@
 class Robot
 def initialize
 @initialPosition = :INACTIVE
-@direction = Array["NORTH","EAST","SOUTH", "WEST"]
+@DIRECTION = Array["NORTH","EAST","SOUTH", "WEST"]
 @firstMove = true
 end
 
 def place (x,y,f)
-if(@direction.include?(f))
-@f= @direction.index(f).to_i
+if(@DIRECTION.include?(f))
+@f= @DIRECTION.index(f).to_i
 else
 puts "Wrong direction"
 return
@@ -81,7 +81,7 @@ if(@initialPosition == :INACTIVE)
 puts "Robot is not active yet"
 return
 end
-puts  "RObot Location: #{@x},#{@y},#{@direction[@f]}"
+puts  "RObot Location: #{@x},#{@y},#{@DIRECTION[@f]}"
 end
 
 def outOfTable(x,y)
@@ -109,7 +109,7 @@ x-=1
 end
 
 
-if(outOfTable(x,y))	
+if(outOfTable(x,y)) 
 return {}
 else
 return {'x'=>x,'y'=>y}
