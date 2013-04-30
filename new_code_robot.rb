@@ -209,3 +209,82 @@ class MyFirstTest < Test::Unit::TestCase
 
   end
 end
+# This is the code
+class Robot
+
+  def initialize
+    @placed_on_grid = false
+    @x = nil
+    @y = nil
+    @first_command_place = false
+    @direction = Array["NORTH", "EAST", "SOUTH", "WEST"]
+  end
+
+  def command(arg)
+    if (what_cmd(arg) == 'PLACE')
+      @placed_on_grid = true
+      set_x_and_y arg
+      error
+    elsif  arg == "REPORT" && @placed_on_grid == true
+      "#{@x},#{@y},#{@direction}"
+    else
+      "Error, first command must be PLACE"
+    end
+  end
+
+  def command_a(arg)
+
+    if (what_cmd(arg) == 'LEFT')
+      @placed_on_grid = true
+      @first_command_place = true
+      left
+      error
+    elsif  arg == "REPORT" && @placed_on_grid == true
+      "#{@x},#{@y},#{@direction}"
+    else
+      "Error, first command must be PLACE"
+    end
+
+  end
+
+
+  def error
+    if @x.to_i <= 6 && @y.to_i <= 6 && @x.to_i >=0 && @y.to_i >=0
+      return "PLACE Succeeded"
+    else
+      return "Error, PLACE must be on grid"
+    end
+  end
+
+
+  def left
+    @x, @y, @direction = @direction - 1
+
+    if (@direction < 0)
+      @direction = @direction + 4
+    end
+  end
+
+
+  def right
+    @placed_on_grid = true
+    @direction = @direction + 1
+    if (@direction > 3)
+      @direction = @direction - 4
+    end
+  end
+
+#####Jarrod's helper methods
+  def set_x_and_y arg
+    @x, @y, @direction = arg.sub('PLACE ', '').split(',')
+
+
+  end
+
+
+  def what_cmd arg
+    arg.split(' ').first
+  end
+
+
+end
