@@ -1,5 +1,4 @@
 require "test/unit"
-require_relative '../application/robot'
 
 class MyFirstTest < Test::Unit::TestCase
 
@@ -241,6 +240,8 @@ class Robot
       error
     elsif  arg == "REPORT" && @placed_on_grid == true
       "#{@x},#{@y},#{@direction}"
+    elsif arg == "LEFT" && @placed_on_grid == true
+      left
     else
       "Error, first command must be PLACE"
     end
@@ -258,21 +259,10 @@ class Robot
 
 
   def left
-    @x, @y, @direction = @direction - 1
-
-    if (@direction < 0)
-      @direction = @direction + 4
-    end
+  
+@direction = "W"
   end
 
-
-  def right
-    @placed_on_grid = true
-    @direction = @direction + 1
-    if (@direction > 3)
-      @direction = @direction - 4
-    end
-  end
 
 #####Jarrod's helper methods
   def set_x_and_y arg
