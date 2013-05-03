@@ -231,22 +231,6 @@ class Robot
     end
   end
 
-  def command_a(arg)
-
-    if (what_cmd(arg) == 'LEFT')
-      @placed_on_grid = true
-      @first_command_place = true
-      left
-      error
-    elsif  arg == "REPORT" && @placed_on_grid == true
-      "#{@x},#{@y},#{@direction}"
-    elsif arg == "LEFT" && @placed_on_grid == true
-      left
-    else
-      "Error, first command must be PLACE"
-    end
-
-  end
 
 
   def error
